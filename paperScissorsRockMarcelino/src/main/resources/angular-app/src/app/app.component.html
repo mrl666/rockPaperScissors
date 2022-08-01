@@ -1,0 +1,264 @@
+<style>
+	:host {
+		font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+		font-size: 14px;
+		color: #333;
+		box-sizing: border-box;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		margin: 8px 0;
+	}
+
+	p {
+		margin: 0;
+	}
+
+	.spacer {
+		flex: 1;
+	}
+
+	.toolbar {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 60px;
+		display: flex;
+		align-items: center;
+		background-color: #1976d2;
+		color: white;
+		font-weight: 600;
+	}
+
+	.toolbar img {
+		margin: 0 16px;
+	}
+
+	.toolbar #twitter-logo {
+		height: 40px;
+		margin: 0 8px;
+	}
+
+	.toolbar #youtube-logo {
+		height: 40px;
+		margin: 0 16px;
+	}
+
+	.toolbar #twitter-logo:hover,
+	.toolbar #youtube-logo:hover {
+		opacity: 0.8;
+	}
+
+	.content {
+		display: flex;
+		margin: 82px auto 32px;
+		padding: 0 16px;
+		max-width: 960px;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	svg.material-icons {
+		height: 24px;
+		width: auto;
+	}
+
+	svg.material-icons:not(:last-child) {
+		margin-right: 8px;
+	}
+
+	.card svg.material-icons path {
+		fill: #888;
+	}
+
+	.card-container {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		margin-top: 16px;
+	}
+
+	.card {
+		all: unset;
+		border-radius: 4px;
+		border: 1px solid #eee;
+		background-color: #fafafa;
+		height: 40px;
+		width: 200px;
+		margin: 0 8px 16px;
+		padding: 16px;
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		transition: all 0.2s ease-in-out;
+		line-height: 24px;
+	}
+
+	.card-container .card:not(:last-child) {
+		margin-right: 0;
+	}
+
+	.card.card-small {
+		height: 16px;
+		width: 168px;
+	}
+
+	.card-container .card:not(.highlight-card) {
+		cursor: pointer;
+	}
+
+	.card-container .card:not(.highlight-card):hover {
+		transform: translateY(-3px);
+		box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+	}
+
+	.card-container .card:not(.highlight-card):hover .material-icons path {
+		fill: rgb(105, 103, 103);
+	}
+
+	.card.highlight-card {
+		background-color: #1976d2;
+		color: white;
+		font-weight: 600;
+		border: none;
+		width: auto;
+		min-width: 30%;
+		position: relative;
+	}
+
+	svg#rocket-smoke {
+		height: calc(100vh - 95px);
+		position: absolute;
+		top: 10px;
+		right: 180px;
+		z-index: -10;
+	}
+
+	/* Responsive Styles */
+	@media screen and (max-width: 767px) {
+
+		.card-container>*:not(.circle-link),
+		.terminal {
+			width: 100%;
+		}
+
+		.card:not(.highlight-card) {
+			height: 16px;
+			margin: 8px 0;
+		}
+
+		.card.highlight-card span {
+			margin-left: 72px;
+		}
+
+		svg#rocket-smoke {
+			right: 120px;
+			transform: rotate(-5deg);
+		}
+	}
+
+	@media screen and (max-width: 575px) {
+		svg#rocket-smoke {
+			display: none;
+			visibility: hidden;
+		}
+	}
+</style>
+
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+	<img width="100" alt="Logo"
+		src="https://camo.githubusercontent.com/527a13b5cb37766311fcbc439ce1dee183658768af869dad31fb33d5de191420/68747470733a2f2f696d616765732d6e612e73736c2d696d616765732d616d617a6f6e2e636f6d2f696d616765732f492f3631516b766d764564564c2e706e67" />
+	<span>Welcome, player.</span>
+	<div class="spacer"></div>
+</div>
+
+<div class="content" role="main">
+
+	<!-- Highlight Card -->
+	<div class="card highlight-card card-small">
+			<span><h2>{{ title }}</h2></span>
+					<svg id="rocket-smoke" xmlns="http://www.w3.org/2000/svg" width="516.119" height="1083.632"
+			viewBox="0 0 516.119 1083.632">
+			<title>Rocket Ship Smoke</title>
+			<path id="Path_40" data-name="Path 40"
+				d="M644.6,141S143.02,215.537,147.049,870.207s342.774,201.755,342.774,201.755S404.659,847.213,388.815,762.2c-27.116-145.51-11.551-384.124,271.9-609.1C671.15,139.365,644.6,141,644.6,141Z"
+				transform="translate(-147.025 -140.939)" fill="#f5f5f5" />
+		</svg>
+	</div>
+
+	<h2>Make your choice!</h2>
+	<p>Play against the machine</p>
+
+	<div class="card-container">
+		<button class="card card-small" (click)="sendBet('PAPER')" tabindex="0">
+			<svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+				<path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+			</svg>
+			<span>Paper</span>
+		</button>
+
+		<button class="card card-small" (click)="sendBet('ROCK')" tabindex="0">
+			<svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+				<path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+			</svg>
+			<span>Rock</span>
+		</button>
+
+		<button class="card card-small" (click)="sendBet('SCISSORS')" tabindex="0">
+			<svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+				<path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+			</svg>
+			<span>Scissors</span>
+		</button>
+
+	</div>
+
+	<div *ngIf="score">
+		<div class="card-container">
+			<div *ngIf="player">
+				<h2>You win!!</h2>
+			</div>
+			<div *ngIf="machine">
+				<h2>Machine wins!!</h2>
+			</div>
+			<div *ngIf="tied">
+				<h2>Tied!!</h2>
+			</div>
+		</div>
+		
+		<div class="card-container">
+	    	Your bet is: {{playerBet}}. Machine says: {{machineBet}}.
+		</div>
+		<div class="card-container">
+	    	Your points: {{playerPoints}}. Machine points: {{machinePoints}}.
+		</div>	
+		
+	</div>
+	
+	<div *ngIf="errorMsg">		
+		<div class="card-container">
+	    	Sorry. Try again. There has been an error in the request.
+		</div>		
+	</div>	
+
+	<div class="card-container">
+		<button class="card card-small" (click)="resetGame()" tabindex="0">
+			<svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+				<path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path>
+			</svg>
+			<span>Reset game</span>
+		</button>
+
+	</div>	
+
+</div>
